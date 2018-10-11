@@ -1,32 +1,41 @@
 .App {
-  text-align: center;
+    width: 70%;
+    margin: 0 auto;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.App .name{
+    color: blue;
+    width: 30%;
+    float: left;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App .email{
+    color: green;
+    width: 70%;
+    float: left;
 }
-
-.App-link {
-  color: #61dafb;
+.App .name strong ,.App .email strong{
+    color: #000;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App .post{
+    width: 40%;
+    text-align: center;
+    float: left;
+    padding: 15px;
+    background: #ffffaa;
+    margin-bottom: 20px;
+    box-shadow: 0px 9px 27px 0px rgba(154, 154, 154, 0.64);
+}
+.App .post:nth-child(even){
+    margin-left: 20px;
+}
+.App .post img{
+    height: 200px;
+    width: 200px;
+}
+.App .post .title{
+    text-transform: capitalize;
+    color: green;
+}
+.App .post .body{
+    text-transform: capitalize;
+    color: darkblue;
 }
