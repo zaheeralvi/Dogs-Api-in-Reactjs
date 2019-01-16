@@ -7,10 +7,11 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state={
-            isloaded: true,
+            isloaded: false,
             iscloaded: false,
             items:[],
-            images:[]
+            images:[],
+            title: []
         }
 
     }
@@ -28,50 +29,95 @@ class App extends Component {
 
     }
 
-        showimagesHandler=(props)=>{
-            const breed =props.
-            fetch('https://dog.ceo/api/breeds/images')
-                .then(res => res.json())
-                .then(json => {
-                    console.log(json.message);
-                    this.setState({
-                        isloaded:true,
-                        images : json.message
-                    })
-                });
-        }
+    showimagesHandler=(key)=>{
+
+        let breed =key;
+        let api ='https://dog.ceo/api/breed/'+key+'/images';
+
+        this.setState({
+            isloaded:false,
+            title:key
+        })
+        // console.log(api);
+
+        fetch(api)
+            .then(res => res.json())
+            .then(json => {
+                console.log(json.message);
+                this.setState({
+                    isloaded:true,
+                    images : json.message
+                })
+            });
+    }
+
+
 
     render(){
         var {isloaded , items ,images}=this.state;
         var id;
 
-        if (this.state.items) {
+        if (this.state.items && isloaded==true) {
             return (
-                <div>
-                    <ul>
-                        {
-                            Object.keys(items).map((key)=>(
-                              <li><a onClick={this.showimagesHandler.bind(that, key)} href={key}>{key}</a></li>
-                            ))
-                        }
-                    </ul>
-                </div>
+                <main>
+                    <h1 className="mainHeading">Fetching Data from Dogs Api</h1>
+                    <div className="col2">
+                        <ul className="category">
+                            {
+                                Object.keys(items).map((key)=>(
+                                  <li><a onClick={this.showimagesHandler.bind(this, key)}>{key}</a></li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                    <div id="root" className="col10">
+                        <div>
+                            <h1 className="title">These are blongs to the {this.state.title}</h1>
+                            <ul className="images_list">
+                                    {images.map(key2=>(
+                                        <li><img src={key2} /></li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </main>
             )
+        }if(this.state.items) {
+            return (
+                <main>
+                    <h1 className="mainHeading">Fetching Data from Dogs Api</h1>
+                    <div className="col2">
+                        <ul className="category">
+                            {
+                                Object.keys(items).map((key)=>(
+                                    <li><a onClick={this.showimagesHandler.bind(this, key)}>{key}</a></li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                    <div className="col10">
+                        <h2>Please Select the Breed of Dog to View the Images of that Bread</h2>
+                    </div>
+                </main>
+            );
+        }else {
+            return <h2>Loading......</h2>;
         }
 
 
 
         if(isloaded==true) {
             return (
-                <div id="root" className="App">
+                <div id="root" className="half">
                     <div>
-                        <h2>
-                            {
-                                // JSON.stringify(images)
-                                // JSON.stringify(this.state.items)
+                        <ul>
+                            <li>items goes here</li>
+                            {images.map(key2=>(
+                                   <li><img src={key2} /></li>
+                                ))
                             }
-                        </h2>
-
+                        </ul>
                     </div>
                 </div>
             );

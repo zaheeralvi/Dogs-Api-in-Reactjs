@@ -39,3 +39,82 @@
     text-transform: capitalize;
     color: darkblue;
 }
+.col2{
+    width: 15%;
+    display: inline-block;
+    float: left;
+    background: #faf2f3;
+}
+.col10{
+    width: 85%;
+    display: inline-block;
+    float: left;
+    background: #d6cdce;
+}
+.half{
+    width: 50%;
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+}
+.mainHeading{
+    font-size: 35px;
+    text-transform: capitalize;
+    text-align: center;
+    color: green;
+}
+.category{
+    list-style: none;
+    padding: 15px;
+}
+.category{
+    list-style: none;
+}
+.category li a{
+    font-size: 18px;
+    color: green;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.title{
+    font-size: 25px;
+    text-align: center;
+    color: green;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.images_list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.images_list li{
+    height: 200px;
+    flex: 0 0 32%;
+    margin-bottom: 17px;
+}
+.images_list li img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    transition: all .5s;
+}
+.images_list li img:hover {
+    transform: scale(1.5) ;
+}
+.images_list li:nth-child(3n) img:hover {
+    transform: scale(1.5) translateX(-60px);
+}
+.images_list li:nth-child(3n-2) img:hover {
+    transform: scale(1.5) translateX(60px);
+}
+.images_list li:nth-child(1) img:hover{
+    transform: scale(1.5) translate(60px , 33px);
+}
+.images_list li:nth-child(2) img:hover{
+    transform: scale(1.5) translateY(33px);
+}
+.images_list li:nth-child(3) img:hover{
+    transform: scale(1.5) translate(-60px , 33px);
+}
